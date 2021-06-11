@@ -1,5 +1,3 @@
-#include <experimental/coroutine>
-#include <experimental/generator>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -9,9 +7,11 @@
 #include <thread>
 #include <algorithm>
 #include <stdlib.h>
-
+#include <coroutine>
 #include "twosum.h"
 #include "lladdtwonum.h"
+#include "server_vs_tasks.h"
+
 using namespace std;
 
 enum class LogLevel
@@ -20,12 +20,6 @@ enum class LogLevel
 eDebug = 2,
 eMax = 4
 };
-
-experimental::generator<int> iota(int n = 0)
-{
-   while (true)
-      co_yield n++;
-}
 
 class RefTest
 {
@@ -112,7 +106,7 @@ void checkTwoSum() {
 
 int main(int argc, char** argv)
 {
-   auto v = iota();
+   /*auto v = iota();
    auto cnt = 0;
 
    auto print = [&]() { auto i = 0;  for (auto iter = v.begin(); iter != v.end(); ++iter) {
@@ -128,7 +122,7 @@ int main(int argc, char** argv)
    print();
    v = iota();
    std::cout << "Second:" << std::endl;
-   print();
+   print();*/
 
    auto& ref = RetRef();
    ref.Print();

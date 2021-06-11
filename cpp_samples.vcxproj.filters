@@ -23,8 +23,14 @@
     <ClInclude Include="twosum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="twoeggnf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="server_vs_tasks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="lladdtwonum.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
