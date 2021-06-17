@@ -22,6 +22,9 @@
 // Fix the order issue - multi map keys are not ordered, need to check before insertion
 // IF same value comes for the key lower index needs to be added first
 // Use eq_range and select lowest value key
+
+// TODO: Not all test cases are passing, fix
+// try to use a priority queue for available serers
 #include <vector>
 #include <map>
 using namespace std;

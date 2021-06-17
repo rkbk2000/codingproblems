@@ -11,6 +11,7 @@
 #include "twosum.h"
 #include "lladdtwonum.h"
 #include "server_vs_tasks.h"
+#include "strongpwd.h"
 
 using namespace std;
 
@@ -183,5 +184,10 @@ int main(int argc, char** argv)
    LLAddTwoNum l1;
    auto res = l1.addTwoNumbers(getlist(std::vector<int>{2,4,3}), getlist(std::vector<int>{5, 6, 4}));
    l1.printRes(res);
+
+   cout << "argv1 : " << argv[1];
+   SolutionPwd sp1;   
+   std::cout << "Min steps for a strong pwd= " <<
+      sp1.strongPasswordChecker(argv[1]) << std::endl;
    return 0;
 }

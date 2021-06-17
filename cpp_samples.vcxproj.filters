@@ -32,5 +32,8 @@
     <ClInclude Include="lladdtwonum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="strongpwd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
