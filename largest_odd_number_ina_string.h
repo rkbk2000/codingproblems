@@ -48,3 +48,23 @@ public:
         return res;
     }
 };
+
+// Most elegant one line solution :
+// string largestOddNumber(string n)
+// {
+//     return n.substr(0, n.find_last_of("13579") + 1);
+// }
+
+// another simple solution
+// class Solution
+// {
+// public:
+//     string largestOddNumber(string num)
+//     {
+//         int i = num.size() - 1;
+//         //Find the rightmost odd number
+//         while (i >= 0 and (num[i--] - '0') % 2 == 0)
+//             num.pop_back();
+//         return num;
+//     }
+// };
