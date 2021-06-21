@@ -1,0 +1,14 @@
+1. Find if a range is present in a sorted array:
+An array containing positive elements is given. ‘A’ and ‘B’ are two numbers defining a range. Write a function to check if the array contains all elements in the given range.
+
+https://www.geeksforgeeks.org/check-if-an-array-contains-all-elements-of-a-given-range/
+Method 1 : (Intuitive) 
+The most intuitive approach is to sort the array and check from the element greater than ‘A’ to the element greater than ‘B’. If these elements are in continuous order, all elements in the range exists in the array.
+Time complexity: O(n log n) 
+Auxiliary space: O(1)
+Method 2 : (Hashing) 
+We can maintain a count array or a hash table that stores the count of all numbers in the array that are in the range A…B. Then we can simply check if every number occurred at least once.
+Time complexity : O(n) 
+Auxiliary space : O(max_element)
+Method 3 : (Best) 
+Do a linear traversal of the array. If an element is found such that |arr[i]| >= A and |arr[i]| 
