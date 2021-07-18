@@ -47,6 +47,7 @@
 // If you have to add a new rung, add it as high up as possible.
 // Try using division to decrease the number of computations.
 
+// 07/18/2021 08:33	Accepted	199 ms	54.1 MB	cpp
 class Solution
 {
 public:
@@ -71,4 +72,48 @@ public:
         return count;
     }
 };
-// 07/18/2021 08:33	Accepted	199 ms	54.1 MB	cpp
+
+// Better solution
+// Runtime: 92 ms, faster than 33.33% of C++ online submissions for Add Minimum Number of Rungs.
+// Memory Usage: 54.1 MB, less than 33.33% of C++ online submissions for Add Minimum Number of Rungs.
+class Solution92
+{
+public:
+    int addRungs(vector<int> &rungs, int dist)
+    {
+        int count = 0, prev = 0;
+
+        for (int i = 0; i < rungs.size(); i++)
+        {
+            auto d = rungs[i] - prev;
+            if (d > dist)
+            {
+                count += (rungs[i] - prev) / dist;
+                if (d % dist == 0)
+                {
+                    // One extact rung is enough if we have exact multiple of distance
+                    --count;
+                }
+            }
+            prev = rungs[i];
+        }
+        return count;
+    }
+};
+
+// Another
+class Solution
+{
+public:
+    int addRungs(vector<int> &rungs, int dist)
+    {
+        int count{0}, prev = 0;
+
+        for (auto v : rungs)
+        {
+            count += (v - prev - 1) / dist;
+            prev = v;
+        }
+        return count;
+    }
+};
