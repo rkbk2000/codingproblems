@@ -127,3 +127,34 @@ public:
         return ans + 1;
     }
 };
+
+// Another solution with O(1) space
+class SolutionO1
+{
+public:
+    int partitionDisjoint(vector<int> &nums)
+    {
+
+        int sz = nums.size();
+
+        // tempmax contains the maximum found until the last min partition
+        // lmax is the max from last min partition to current index till which partition gets extended
+        // Inititally both are same
+        int tempmax = nums[0], lmax = nums[0];
+        int ans = 1;
+
+        for (auto i = 1; i < sz; i++)
+        {
+            if (nums[i] < tempmax)
+            {
+                ans = i + 1;
+                tempmax = lmax;
+            }
+            else
+            {
+                lmax = std::max(nums[i], lmax);
+            }
+        }
+        return ans;
+    }
+};
