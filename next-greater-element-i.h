@@ -6,8 +6,6 @@
 
 // Return an array ans of length nums1.length such that ans[i] is the next greater element as described above.
 
- 
-
 // Example 1:
 
 // Input: nums1 = [4,1,2], nums2 = [1,3,4,2]
@@ -23,7 +21,6 @@
 // Explanation: The next greater element for each value of nums1 is as follows:
 // - 2 is underlined in nums2 = [1,2,3,4]. The next greater element is 3.
 // - 4 is underlined in nums2 = [1,2,3,4]. There is no next greater element, so the answer is -1.
- 
 
 // Constraints:
 
@@ -31,7 +28,6 @@
 // 0 <= nums1[i], nums2[i] <= 104
 // All integers in nums1 and nums2 are unique.
 // All the integers of nums1 also appear in nums2.
- 
 
 // Follow up: Could you find an O(nums1.length + nums2.length) solution?
 
@@ -53,6 +49,43 @@ public:
             if (it2 != nums2.end())
             {
                 result[i] = *it2;
+            }
+        }
+        return result;
+    }
+};
+
+// Using stack and a hashmap
+// Runtime: 4 ms, faster than 94.93% of C++ online submissions for Next Greater Element I.
+// Memory Usage: 8.9 MB, less than 56.44% of C++ online submissions for Next Greater Element I.
+class Solution
+{
+public:
+    // We use a stack to keep a decreasing sub-sequence, whenever we see a number x greater than stack.peek() we pop all elements less than x and for all the popped ones, their next greater element is x
+    // For example [9, 8, 7, 3, 2, 1, 6]
+    // The stack will first contain [9, 8, 7, 3, 2, 1] and then we see 6 which is greater than 1 so we pop 1 2 3 whose next greater element should be 6
+    vector<int> nextGreaterElement(vector<int> &nums1, vector<int> &nums2)
+    {
+        vector<int> result(nums1.size(), -1);
+        unordered_map<int, int> nmap;
+        stack<int> nstack;
+
+        for (auto n : nums2)
+        {
+            while (!nstack.empty() && nstack.top() < n)
+            {
+                nmap.insert({nstack.top(), n});
+                nstack.pop();
+            }
+            nstack.push(n);
+        }
+
+        for (int i = 0; i < nums1.size(); i++)
+        {
+            auto it = nmap.find(nums1[i]);
+            if (it != nmap.end())
+            {
+                result[i] = it->second;
             }
         }
         return result;
